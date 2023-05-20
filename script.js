@@ -5,18 +5,27 @@ display.textContent = '100';
 
 
 let buttons = document.querySelectorAll('button');
-console.log(buttons);
+
 
 buttons.forEach((item) => {
-    item.target.addEventListener('click', changeDisplay(item))
+    item.addEventListener('click', changeDisplay(item))
 });
 
 
 function changeDisplay(button) {
-    let dispVal = button.textContent;   
-    display.textContent = dispVal;
+    let dispVal = button; 
+    display.textContent = button.target.textContent;
 }
 
+
+
+
+
+
+let but3 = document.getElementById('9')
+but3.addEventListener('click', () => {
+    display.textContent = but3.textContent;
+})
 
 
 
