@@ -1,31 +1,52 @@
 const display = document.getElementById('display')
 display.textContent = '100';
 
+let first = '';
+let op = "";
+let second = '';
+let dispVal = '';
+let equal = document.querySelector('#equal');
 
 
 
-let buttons = document.querySelectorAll('button');
+function changeDisplay() {
+    
+}
 
+let btns = document.querySelectorAll('.num');
 
-buttons.forEach((item) => {
-    item.addEventListener('click', changeDisplay(item))
+btns.forEach(function (i) {
+  i.addEventListener('click', function() {
+    dispVal += i.textContent;
+    display.textContent = i.textContent;
+    console.log(dispVal);
+  });
 });
 
 
-function changeDisplay(button) {
-    let dispVal = button; 
-    display.textContent = button.target.textContent;
-}
+let ops = document.querySelectorAll('.op');
+
+ops.forEach(function (i) {
+    i.addEventListener('click', function() {
+        first = dispVal;
+        dispVal = ''
+        op = i.textContent;
+    })
+});
 
 
 
 
 
 
-let but3 = document.getElementById('9')
-but3.addEventListener('click', () => {
-    display.textContent = but3.textContent;
-})
+
+
+equal.addEventListener('click', function() {
+    a = parseInt(first);
+    b = parseInt(dispVal);
+    let result = console.log(operate(a, op, b));
+    dispVal = result;
+});
 
 
 
@@ -45,21 +66,21 @@ function multiply(a, b) {
 
 function divide(a, b) {return a / b}
 
-const first = 0;
-const op = "none";
-const second = 0;
 
-function operate(a, op, b) {
-    if (op === "add") {
-        add(a, b)
+function operate(a, operator, b) {
+    if (operator == "+") {
+        return add(a, b);
     }
-    else if (op === "subtract") {
-        subtract(a, b);
+    else if (operator == "-") {
+        return subtract(a, b);
     }
-    else if (op === "multiply") {
-        multiply(a, b);
+    else if (operator == "*") {
+        return multiply(a, b);
     }
-    else if (op === "divide") {
-        divide(a, b);
+    else if (operator == "/") {
+        return divide(a, b);
+    }
+    else {
+        return add(a, b);
     }
 }
