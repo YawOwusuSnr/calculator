@@ -1,21 +1,39 @@
 const display = document.getElementById('display')
-const second_display = document.getElementById
+const working_display = document.getElementById('working_display')
 const equal = document.getElementById('equal');
+const clear = document.getElementById('clear')
+
+const digits = document.querySelectorAll(".num");
+const operators = document.querySelectorAll('.op');
 
 
-const digits = document.querySelectorAll(".num")
-const ops = document.querySelectorAll('.op');
-
-
-
-
-let first = '';
-let op = "";
-let second = '';
-let dispVal = '';
+let firstPart = '';
+let secondPart = '';
 
 
 
+digits.forEach((digit) => 
+    digit.addEventListener('click', () => display.append(digit.textContent)))
+
+operators.forEach((operator) => 
+    operator.addEventListener('click', () =>  {
+    firstPart = display.textContent
+    opText = operator.textContent
+    display.append(opText)
+}))
+
+equal.addEventListener('click', callToOperate)
+
+
+
+
+function callToOperate() {
+    let solution = operate(firstPart, opText, display.textContent)
+    working_display.textContent = solution;
+}
+
+
+/*
 
 let btns = document.querySelectorAll('.num');
 
@@ -47,8 +65,7 @@ equal.addEventListener('click', function() {
 });
 
 
-
-
+*/
 
 
 
@@ -85,6 +102,6 @@ function operate(a, operator, b) {
         return divide(a, b);
     }
     else {
-        return add(a, b);
+        return "ERROR"
     }
 }
