@@ -1,17 +1,21 @@
 const display = document.getElementById('display')
-display.textContent = '100';
+const second_display = document.getElementById
+const equal = document.getElementById('equal');
+
+
+const digits = document.querySelectorAll(".num")
+const ops = document.querySelectorAll('.op');
+
+
+
 
 let first = '';
 let op = "";
 let second = '';
 let dispVal = '';
-let equal = document.querySelector('#equal');
 
 
 
-function changeDisplay() {
-    
-}
 
 let btns = document.querySelectorAll('.num');
 
@@ -24,7 +28,7 @@ btns.forEach(function (i) {
 });
 
 
-let ops = document.querySelectorAll('.op');
+
 
 ops.forEach(function (i) {
     i.addEventListener('click', function() {
@@ -33,12 +37,6 @@ ops.forEach(function (i) {
         op = i.textContent;
     })
 });
-
-
-
-
-
-
 
 
 equal.addEventListener('click', function() {
@@ -51,6 +49,12 @@ equal.addEventListener('click', function() {
 
 
 
+
+
+
+
+
+// operate and arithmetic functions
 
 function add(a, b) {
     return a+b;
